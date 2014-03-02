@@ -1,0 +1,20 @@
+<span page-title ng-model="report">{{ 'Operating Systems for: ' | translate }} {{ report.name }}</span>
+
+<h4 translate>Operating Systems</h4>
+<nav>
+  <ul class="nav nav-tabs">
+    <li ng-class="{active: isState('reports.details.operating-systems.list')}">
+      <a ui-sref="reports.details.operating-systems.list">
+        <span translate>List/Remove</span>
+      </a>
+    </li>
+
+    <li ng-class="{active: isState('reports.details.operating-systems.add')}">
+      <a ui-sref="reports.details.operating-systems.add">
+        <span translate>Add</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div ui-view></div>

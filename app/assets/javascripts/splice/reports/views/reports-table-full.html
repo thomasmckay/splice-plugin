@@ -1,0 +1,20 @@
+<table class="table table-striped" ng-class="{'table-mask': table.working}">
+  <thead>
+    <tr alch-table-head row-select>
+      <th alch-table-column="name" sortable>{{ "Name" | translate }}</th>
+      <th alch-table-column="limit" sortable>{{ "Operating Systems" | translate }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr alch-table-row ng-repeat="report in table.rows" row-select="report">
+      <td alch-table-cell>
+        <a ui-sref="reports.details.info({reportId: report.id})">
+          {{ report.name }}
+        </a>
+        <i class="icon-chevron-right selected-icon" ng-show="report.selected"></i>
+      </td>
+      <td alch-table-cell>{{ formatNamesList(report.operatingsystems) }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,51 @@
+<div class="loading-mask loading-mask-panel icon-3x" ng-show="panel.loading">
+  <i class="icon-spinner icon-spin"></i>
+  {{ "Loading..." | translate }}
+</div>
+
+<section class="nutupane-details" ng-cloak alch-container-scroll>
+
+  <header class="details-header">
+    <h2 class="pull-left" translate>Report: {{ report.name }}</h2>
+
+    <div class="details-actions pull-right">
+      <button class="btn btn-danger"
+              ng-click="openModal()" ng-disabled="!report.permissions.deletable" translate>
+        Remove
+      </button>
+
+      <button class="btn btn-default" ui-sref="reports.index">
+        <i class="icon-remove"></i>
+        {{ "Close" | translate }}
+      </button>
+
+      <div alch-modal="removeReport(report)" model="report"
+           modal-header="{{ 'Remove Report ' + report.name + '?' | translate }}"
+           modal-body="{{ 'Are you sure you want to remove report ' + report.name + '?' | translate }}"></div>
+
+    </div>
+  </header>
+
+  <nav class="details-navigation">
+    <ul>
+      <li ng-class="{active: isState('reports.details.info')}">
+        <a ui-sref="reports.details.info">
+          <span translate>
+            Details
+          </span>
+        </a>
+      </li>
+      <li ng-class="{active: stateIncludes('reports.details.operating-systems')}">
+        <a ui-sref="reports.details.operating-systems.list">
+          <span translate>
+            Operating Systems
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div alch-alert success-messages="successMessages" error-messages="errorMessages"></div>
+
+  <section class="nutupane-sub-section" ui-view></section>
+</section>
